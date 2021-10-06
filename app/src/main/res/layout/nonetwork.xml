@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_nointernet">
+    android:background="@color/secondary_variant">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
             android:layout_width="160sp"
             android:layout_height="160sp"
             android:src="@drawable/mundobroke"
-            android:tint="@color/background_nointernet_text" />
+            android:tint="@color/colorAccent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
@@ -27,6 +27,6 @@
             android:gravity="center"
             android:maxLines="2"
             android:text="@string/no_internet"
-            android:textColor="@color/background_nointernet_text" />
+            android:textColor="@color/colorAccent" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.splashscreen.SplashScreenActivity">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.test.app.ui.splashscreen.SplashScreenViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/act_spl_cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/act_lav_splash"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/splash"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

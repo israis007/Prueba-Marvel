@@ -12,7 +12,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.test.punkapi"
+        applicationId 'com.test.app'
         minSdkVersion 24
         targetSdkVersion 31
         versionCode 1
@@ -67,7 +67,6 @@ android {
             minifyEnabled false
             signingConfig signingConfigs.qa
             versionNameSuffix = " - QA"
-            applicationIdSuffix = ".qa"
             debuggable true
             jniDebuggable true
             renderscriptDebuggable true
@@ -86,7 +85,6 @@ android {
             minifyEnabled false
             signingConfig signingConfigs.debug
             versionNameSuffix = " - Dev"
-            applicationIdSuffix = ".dev"
             debuggable true
             jniDebuggable true
             renderscriptDebuggable true

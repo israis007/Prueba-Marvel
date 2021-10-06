@@ -7,6 +7,7 @@
     <dimen name="main_cv_text_margin_end">12sp</dimen>
     <dimen name="corner_padding">10dp</dimen>
     <dimen name="corner_stroke">3dp</dimen>
+    <dimen name="corner_radius_dialog">20dp</dimen>
     <dimen name="corner_radius_top_right">20dp</dimen>
     <dimen name="corner_radius_top_left">10dp</dimen>
     <dimen name="corner_radius_bottom_right">20dp</dimen>
@@ -18,4 +19,8 @@
     <dimen name="main_iv_height">180sp</dimen>
     <dimen name="main_actv_tagline_margin_start">12sp</dimen>
     <dimen name="main_actv_tagline_margin_top">4sp</dimen>
+    <dimen name="dimen_10dp">10dp</dimen>
+    <dimen name="dimen_14dp">14dp</dimen>
+    <dimen name="text_error_size_title">30sp</dimen>
+    <dimen name="text_error_size_msg">18sp</dimen>
 </resources>

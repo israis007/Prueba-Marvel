@@ -4,12 +4,12 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import com.test.app.App
+import com.test.app.AppTest
 
 class NetworkChecker {
     companion object {
         fun isConnected(): Boolean {
-            val conman = App.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val conman = AppTest.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             return if (Build.VERSION.SDK_INT < 23){
                 val netinfo = conman.activeNetworkInfo
                 if (netinfo != null)
