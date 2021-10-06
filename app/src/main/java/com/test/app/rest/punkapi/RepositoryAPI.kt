@@ -17,7 +17,7 @@ class RepositoryAPI {
 
     companion object {
 
-        private val TAG = "RepositoryPunkAPI"
+        private val TAG = "RepositoryAPI"
 
         private fun httpInterceptor(): HttpLoggingInterceptor {
             val interceptor = HttpLoggingInterceptor()
@@ -46,12 +46,6 @@ class RepositoryAPI {
                 service ?: builder.build().create(InterfacePunkAPI::class.java)
             }
 
-        suspend fun getBeers(viewModel: ViewModelStoreOwner, page: Int, elements: Int) =
-            try {
-                getService(viewModel).getBeers(page, elements)
-            } catch (ex: Exception) {
-                null
-                Log.e(TAG, ex.message!!)
-            }
+
     }
 }

@@ -1,17 +1,10 @@
 package com.test.app.ui.mainscreen.adapters
 
 import android.content.Context
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ProgressBar
-import androidx.appcompat.widget.AppCompatTextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.test.app.App
 import com.test.app.R
 import com.test.app.ui.mainscreen.models.BeerModel
 
@@ -24,36 +17,7 @@ class beerAdapter(
 
     inner class BeerItem(private val beerView: View) : RecyclerView.ViewHolder(beerView) {
         fun bindItems(beerModel: BeerModel) {
-            val constraintLayout = beerView.findViewById<ConstraintLayout>(R.id.main_beer_cv_parentLayout)
-            val progressBar = beerView.findViewById<ProgressBar>(R.id.main_beer_loading_pb)
-            val imageView = beerView.findViewById<ImageView>(R.id.main_beer_cv_icon)
-            val textview_name = beerView.findViewById<AppCompatTextView>(R.id.main_beer_cv_tv_name)
-            val textview_tagline = beerView.findViewById<AppCompatTextView>(R.id.main_beer_cv_tv_tagline)
 
-            if (beerModel.id != 0L && beerModel.name != "Pirata") {
-                constraintLayout.setBackgroundResource(R.drawable.round_corners)
-                progressBar.visibility = View.GONE
-                beerModel.loadImage(imageView)
-                textview_name.text = beerModel.name
-                textview_tagline.text = beerModel.tagline
-                beerView.setOnClickListener {
-                    event.onTouchItem(beerModel)
-                }
-            } else {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    constraintLayout.setBackgroundColor(App.instance.getColor(R.color.white))
-                } else
-                    constraintLayout.setBackgroundColor(
-                        ContextCompat.getColor(
-                            App.instance.applicationContext,
-                            R.color.white
-                        )
-                    )
-                progressBar.visibility = View.VISIBLE
-                imageView.setImageDrawable(null)
-                textview_name.text = ""
-                textview_tagline.text = ""
-            }
         }
     }
 
@@ -79,7 +43,7 @@ class beerAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BeerItem =
-        BeerItem(LayoutInflater.from(context).inflate(R.layout.main_beer_cardview, parent, false))
+        BeerItem(LayoutInflater.from(context).inflate(R.layout.item_picture, parent, false))
 
     override fun getItemCount(): Int =
         listBeers.size
