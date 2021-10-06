@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.viewModelScope
 import com.test.app.AppTest
 import com.test.app.R
-import com.test.app.rest.punkapi.RepositoryAPI
 import com.test.app.ui.mainscreen.models.BeerModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

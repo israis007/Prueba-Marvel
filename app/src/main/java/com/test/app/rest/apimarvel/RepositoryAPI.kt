@@ -1,4 +1,4 @@
-package com.test.app.rest.punkapi
+package com.test.app.rest.apimarvel
 
 import androidx.lifecycle.ViewModelStoreOwner
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -25,9 +25,9 @@ class RepositoryAPI {
             return interceptor
         }
 
-        private var service: InterfacePunkAPI? = null
+        private var service: InterfaceMarvel? = null
 
-        private fun getService(viewModel: ViewModelStoreOwner): InterfacePunkAPI =
+        private fun getService(viewModel: ViewModelStoreOwner): InterfaceMarvel =
             service ?: synchronized(this) {
                 val httpCLient = OkHttpClient.Builder()
                     .addInterceptor(httpInterceptor())
@@ -51,7 +51,7 @@ class RepositoryAPI {
                 builder.addCallAdapterFactory(CoroutineCallAdapterFactory())
                 builder.addConverterFactory(GsonConverterFactory.create())
 
-                service ?: builder.build().create(InterfacePunkAPI::class.java)
+                service ?: builder.build().create(InterfaceMarvel::class.java)
             }
 
 
