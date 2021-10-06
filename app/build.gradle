@@ -1,24 +1,29 @@
-apply plugin: 'com.android.application'
-
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
-    dataBinding {
-        enabled = true
-    }
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
+
     defaultConfig {
         applicationId "com.test.punkapi"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion 24
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding true
+        viewBinding
+    }
+
     signingConfigs {
         release {
             storeFile file("../signs.jks")
@@ -33,6 +38,7 @@ android {
             keyPassword "PirataRam"
         }
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -43,7 +49,7 @@ android {
             multiDexEnabled = true
         }
         debug {
-            versionNameSuffix = '- develop'
+            versionNameSuffix = '- dev'
             signingConfig signingConfigs.debug
             resValue "string", "punkapi_url", "https://api.punkapi.com"
             resValue "string", "date_pattern", "dd/MM/YYYY"
@@ -54,63 +60,94 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
     }
 }
 
-def Lifecycle_version = "2.2.0"
-def Coroutines_version = "1.3.0"
-def Constraint_version = "1.1.3"
-def Corektx_version = "1.2.0"
-def Appcompat_version = "1.1.0"
-def Junit_version = '4.13'
-def JunitTest_version = '1.1.1'
-def Espresso_version = '3.2.0'
-def Retrofit_version = '2.7.1'
-def MultiDex_version = "2.0.1"
-def RecyclerView_version = "1.1.0"
-def Glide_version = "4.11.0"
-def OkHttp_version = "3.11.0"
-def Legacy_version = "1.0.0"
-def RetrofitCoroutines_version = "0.9.2"
+def activityKtx_version             = "1.4.0-beta01"
+def appCompat_version               = "1.3.1"
+def constraint_version              = "2.1.1"
+def coreKotlin_version              = "1.6.0"
+def coroutinesRetrofit_version      = "0.9.2"
+def desugar_version                 = "1.1.5"
+def dot_version                     = "4.2"
+def espresso_version                = "3.4.0"
+def firebaseAuth_version            = "21.0.1"
+def firebaseCrash_version           = '18.2.3'
+def firebaseBom_version             = '28.4.2'
+def firebaseCore_version            = '19.0.2'
+def firebaseFire_version            = '23.0.4'
+def firebaseStorage_version         = "20.0.0"
+def glide_version                   = "4.12.0"
+def junit_version                   = "1.1.3"
+def junitTest_version               = "4.13.2"
+def kenBurns_version                = "1.0.7"
+def lifeCycle_version               = "2.3.1"
+def lottieVersion                   = '4.2.0'
+def material_version                = "1.4.0"
+def multiDex_version                = "2.0.1"
+def navFragment_version             = "2.3.5"
+def navUI_version                   = "2.3.5"
+def okHttp_version                  = "5.0.0-alpha.2"
+def retrofit_version                = "2.9.0"
+def work_version                    = "2.6.0"
+def zxing_version                   = "3.4.1"
+def zxingEmbedded_version           = "4.2.0"
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     //Core
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.core:core-ktx:$Corektx_version"
+    implementation "androidx.core:core-ktx:$coreKotlin_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navFragment_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navUI_version"
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugar_version"
+    implementation "androidx.multidex:multidex:$multiDex_version"
 
-    //Component UI
-    implementation "androidx.constraintlayout:constraintlayout:$Constraint_version"
-    implementation "androidx.appcompat:appcompat:$Appcompat_version"
-    implementation "androidx.recyclerview:recyclerview:$RecyclerView_version"
-    implementation "androidx.legacy:legacy-support-v4:$Legacy_version"
+    //GUI
+    implementation "androidx.appcompat:appcompat:$appCompat_version"
+    implementation "com.google.android.material:material:$material_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+    implementation "androidx.activity:activity-ktx:$activityKtx_version"
 
-    //Multidex
-    implementation "androidx.multidex:multidex:$MultiDex_version"
+    //Images processor
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
 
-    //Lifecycle
-    implementation "androidx.lifecycle:lifecycle-extensions:$Lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$Lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$Lifecycle_version"
-    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$Lifecycle_version"
+    //SplashScreen
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation "com.flaviofaria:kenburnsview:$kenBurns_version"
+    implementation "com.tbuonomo:dotsindicator:$dot_version"
 
-    //Glide (Image cropper)
-    implementation "com.github.bumptech.glide:glide:$Glide_version"
-    annotationProcessor "com.github.bumptech.glide:compiler:$Glide_version"
+    //LifeCycle
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifeCycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycle_version"
+    implementation("androidx.work:work-runtime-ktx:$work_version")
 
-    //Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$Coroutines_version"
+    //Retrofit, Converters & OkHttp
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutinesRetrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp_version"
 
-    //Retrofit and Converters
-    implementation "com.squareup.retrofit2:retrofit:$Retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$Retrofit_version"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$RetrofitCoroutines_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$OkHttp_version"
+    //Firebase Services
+    implementation "com.google.firebase:firebase-core:$firebaseCore_version"
+    implementation "com.google.firebase:firebase-analytics-ktx:$firebaseCore_version"
+    implementation "com.google.firebase:firebase-auth-ktx:$firebaseAuth_version"
+    implementation "com.google.firebase:firebase-bom:$firebaseBom_version"
+    implementation "com.google.firebase:firebase-firestore-ktx:$firebaseFire_version"
+    implementation "com.google.firebase:firebase-storage-ktx:$firebaseStorage_version"
+    implementation "com.google.firebase:firebase-crashlytics-ktx:$firebaseCrash_version"
 
+    //QR Scanner
+    implementation "com.google.zxing:core:${zxing_version}"
+    implementation "com.journeyapps:zxing-android-embedded:${zxingEmbedded_version}@aar"
 
     //Test
-    testImplementation "junit:junit:$Junit_version"
-    androidTestImplementation "androidx.test.ext:junit:$JunitTest_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$Espresso_version"
+    testImplementation "junit:junit:$junitTest_version"
+    androidTestImplementation "androidx.test.ext:junit:$junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 }
