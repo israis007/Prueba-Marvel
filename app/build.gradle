@@ -31,6 +31,12 @@ android {
             keyAlias "release"
             keyPassword "PirataRam"
         }
+        qa {
+            storeFile file("../signs.jks")
+            storePassword "Ikaros007"
+            keyAlias "release"
+            keyPassword "PirataRam"
+        }
         debug {
             storeFile file("../signs.jks")
             storePassword "Ikaros007"
@@ -41,20 +47,56 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            debuggable false
             signingConfig signingConfigs.release
-            resValue "string", "punkapi_url", "https://api.punkapi.com"
-            resValue "string", "date_pattern", "dd/MM/YYYY"
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            multiDexEnabled = true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", '"https:test.com.mx"')
+            buildConfigField("String", "API_KEY", '"Basic bWFzdGVyOlNlY3JldDQyLg=="')
+            buildConfigField("String", "CLIENT_KEY", '"Basic bWFzdGVyOlNlY3JldDQyLg=="')
+            buildConfigField("String", "DATE_FORMAT", '"dd/MM/yyyy"')
+            buildConfigField("String", "DATE_FORMAT_INPUT", '"yyyy-MM-dd"')
+            buildConfigField("Long", "TIMEOUT_SECONDS", '60L')
+            buildConfigField("String", "MONEY_FORMAT", '"$###,####,###,###,###,##0.00"')
+            buildConfigField("String", "DECIMAL_FORMAT", '"###,##0.00"')
+        }
+        qa {
+            minifyEnabled false
+            signingConfig signingConfigs.qa
+            versionNameSuffix = " - QA"
+            applicationIdSuffix = ".qa"
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            renderscriptOptimLevel 3
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", '"https:test.com.mx"')
+            buildConfigField("String", "API_KEY", '"Basic bWFzdGVyOlNlY3JldDQyLg=="')
+            buildConfigField("String", "CLIENT_KEY", '"Basic bWFzdGVyOlNlY3JldDQyLg=="')
+            buildConfigField("String", "DATE_FORMAT", '"dd/MM/yyyy"')
+            buildConfigField("String", "DATE_FORMAT_INPUT", '"yyyy-MM-dd"')
+            buildConfigField("Long", "TIMEOUT_SECONDS", '60L')
+            buildConfigField("String", "MONEY_FORMAT", '"$###,####,###,###,###,##0.00"')
+            buildConfigField("String", "DECIMAL_FORMAT", '"###,##0.00"')
         }
         debug {
-            versionNameSuffix = '- dev'
+            minifyEnabled false
             signingConfig signingConfigs.debug
-            resValue "string", "punkapi_url", "https://api.punkapi.com"
-            resValue "string", "date_pattern", "dd/MM/YYYY"
-            proguardFiles getDefaultProguardFile('proguard-android.txt')
-            multiDexEnabled = true
+            versionNameSuffix = " - Dev"
+            applicationIdSuffix = ".dev"
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            renderscriptOptimLevel 3
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", '"https:test.com.mx"')
+            buildConfigField("String", "API_KEY", '"Basic bWFzdGVyOlNlY3JldDQyLg=="')
+            buildConfigField("String", "CLIENT_KEY", '"Basic bWFzdGVyOlNlY3JldDQyLg=="')
+            buildConfigField("String", "DATE_FORMAT", '"dd/MM/yyyy"')
+            buildConfigField("String", "DATE_FORMAT_INPUT", '"yyyy-MM-dd"')
+            buildConfigField("Long", "TIMEOUT_SECONDS", '60L')
+            buildConfigField("String", "MONEY_FORMAT", '"$###,####,###,###,###,##0.00"')
+            buildConfigField("String", "DECIMAL_FORMAT", '"###,##0.00"')
         }
     }
     compileOptions {
