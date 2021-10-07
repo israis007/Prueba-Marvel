@@ -24,4 +24,7 @@
     <dimen name="text_error_size_title">30sp</dimen>
     <dimen name="text_error_size_msg">18sp</dimen>
     <dimen name="size_loading_anim">150dp</dimen>
+    <dimen name="banner_witdh">150dp</dimen>
+    <dimen name="banner_height">250dp</dimen>
+    <dimen name="item_label_text_size">16sp</dimen>
 </resources>
