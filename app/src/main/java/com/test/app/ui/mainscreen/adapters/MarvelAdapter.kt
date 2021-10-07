@@ -36,6 +36,11 @@ class MarvelAdapter (
                 updateImage(pictureBinding.itemAcivBanner, "${result.thumbnail.path}.${result.thumbnail.extension}")
 
                 pictureBinding.itemAcivBanner.setOnClickListener { event.onTouchItem(result) }
+                pictureBinding.itemChipSeries.setOnClickListener { event.onChipSeriesClickListener(result) }
+                pictureBinding.itemChipComics.setOnClickListener { event.onChipComicsClickListener(result) }
+                pictureBinding.itemChipStories.setOnClickListener { event.onChipStoriesClickListener(result) }
+                pictureBinding.itemChipEvents.setOnClickListener { event.onChipEventsClickListener(result) }
+                pictureBinding.itemChipUrls.setOnClickListener { event.onChipUrlsClickListener(result) }
 
                 executePendingBindings()
             }
@@ -44,7 +49,11 @@ class MarvelAdapter (
 
     interface OnResultTouchListener {
         fun onTouchItem(result: Results)
-
+        fun onChipSeriesClickListener(result: Results)
+        fun onChipComicsClickListener(result: Results)
+        fun onChipStoriesClickListener(result: Results)
+        fun onChipEventsClickListener(result: Results)
+        fun onChipUrlsClickListener(result: Results)
     }
 
 
@@ -56,7 +65,7 @@ class MarvelAdapter (
     }
 
     fun addItemsAfter(list: List<Results>) {
-        var rest = if (this.listResults.size <= 1) 0 else this.listResults.size - 1
+        var rest = if (this.listResults.size <= 1) 0 else this.listResults.size
         repeat(list.size) {
             this.listResults.add(rest, list[it])
             notifyItemInserted(rest)

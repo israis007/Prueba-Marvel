@@ -14,6 +14,7 @@ private const val LIMIT         = "limit"
 private const val TIMESTAMP     = "ts"
 private const val API_KEY       = "apikey"
 private const val HASH          = "hash"
+private const val OFFSET        = "offset"
 
 interface InterfaceMarvel {
 
@@ -22,6 +23,7 @@ interface InterfaceMarvel {
     suspend fun getCharacters(
         @Query(ORDER_BY)    orderBy     : String    = "name",
         @Query(LIMIT)       limit       : Int       = 50,
+        @Query(OFFSET)      offset      : Int       = 0,
         @Query(TIMESTAMP)   timeStamp   : Long      = 1,
         @Query(API_KEY)     apiKey      : String,
         @Query(HASH)        signMD5     : String

@@ -10,6 +10,6 @@ class GetMarvelCaseUse @Inject constructor(
 
     fun getCharacters() = repository.getResponse()
 
-    operator fun invoke(limit: Int) = repository.getCharacters(limit)
+    operator fun invoke(limit: Int, offset: Int) = repository.getCharacters(limit, offset)
 
 }

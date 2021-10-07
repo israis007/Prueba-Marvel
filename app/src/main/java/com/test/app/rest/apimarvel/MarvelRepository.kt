@@ -26,7 +26,7 @@ class MarvelRepository @Inject constructor(
     private val _response = MutableLiveData<Resource<CharactersResponse>>()
     fun getResponse() : LiveData<Resource<CharactersResponse>> = _response
 
-    fun getCharacters(limit: Int) {
+    fun getCharacters(limit: Int, offset : Int) {
         _response.postValue(Resource.loading())
         val timeStamp = Calendar.getInstance(Locale.getDefault()).time.time
         AppTest.instance.setCurrentDate(Date().apply {
@@ -39,6 +39,7 @@ class MarvelRepository @Inject constructor(
                 val response = providesMarvelAPI.marvelAPI(retrofit).getCharacters(
                     "name",
                     limit,
+                    offset,
                     timeStamp,
                     BuildConfig.PUBLIC_KEY,
                     sign

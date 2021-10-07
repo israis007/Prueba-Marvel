@@ -14,6 +14,8 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+private const val RESULTS_BY_QUERY = 30
+
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
     private val getMarvelCaseUse: GetMarvelCaseUse
@@ -22,9 +24,13 @@ class MainActivityViewModel @Inject constructor(
     private val _characterResponse = getMarvelCaseUse.getCharacters()
     val charactersResponse: LiveData<Resource<CharactersResponse>> get() = _characterResponse
 
+    private var limit   = RESULTS_BY_QUERY
+    private var offset  = 0
+
     fun getCharacters(){
         viewModelScope.launch(Dispatchers.IO){
-            getMarvelCaseUse.invoke(50)
+            getMarvelCaseUse.invoke(limit, offset)
+            offset += RESULTS_BY_QUERY
         }
     }
 
