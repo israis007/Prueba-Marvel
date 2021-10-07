@@ -10,8 +10,10 @@ import com.test.app.objects.Results
 import com.test.app.rest.state.StatusType
 import com.test.app.ui.base.ActivityBase
 import com.test.app.ui.mainscreen.adapters.MarvelAdapter
+import com.test.app.ui.tools.CalendarUtils
 import com.test.app.ui.tools.ui.SimpleDividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivityView : ActivityBase() {
@@ -21,6 +23,7 @@ class MainActivityView : ActivityBase() {
     }
     private val vm: MainActivityViewModel by viewModels()
     lateinit var adapter: MarvelAdapter
+    @Inject lateinit var calendarUtils: CalendarUtils
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(binding.root)
@@ -37,7 +40,7 @@ class MainActivityView : ActivityBase() {
             override fun onTouchItem(result: Results) {
                 showImageMessage("${result.thumbnail.path}.${result.thumbnail.extension}")
             }
-        })
+        }, calendarUtils)
         binding.actRv.apply {
             layoutManager = LinearLayoutManager(this@MainActivityView)
             adapter = this@MainActivityView.adapter

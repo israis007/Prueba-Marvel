@@ -11,6 +11,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.test.app.R
 import com.test.app.databinding.ItemPictureBinding
 import com.test.app.objects.Results
+import com.test.app.ui.tools.CalendarUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -19,7 +20,8 @@ import kotlinx.coroutines.launch
 class MarvelAdapter (
     val context: Context,
     val listResults: ArrayList<Results>,
-    val event: OnResultTouchListener
+    val event: OnResultTouchListener,
+    val calendarUtils: CalendarUtils
 ) : RecyclerView.Adapter<MarvelAdapter.ResultItem>() {
 
     lateinit var binding : ItemPictureBinding
@@ -28,7 +30,7 @@ class MarvelAdapter (
         fun setData(result: Results){
             with(pictureBinding){
                 pictureBinding.itemActvName.text = result.name
-                pictureBinding.itemActvModified.text = result.modified
+                pictureBinding.itemActvModified.text = calendarUtils.getLocalFromMarvel(result.modified)
                 pictureBinding.itemActvDescription.text = result.description
 
                 updateImage(pictureBinding.itemAcivBanner, "${result.thumbnail.path}.${result.thumbnail.extension}")
@@ -42,7 +44,7 @@ class MarvelAdapter (
 
     interface OnResultTouchListener {
         fun onTouchItem(result: Results)
-        
+
     }
 
 
