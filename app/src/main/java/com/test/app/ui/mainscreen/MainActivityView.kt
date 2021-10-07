@@ -35,7 +35,7 @@ class MainActivityView : ActivityBase() {
         }
         adapter = MarvelAdapter(this, ArrayList(), object : MarvelAdapter.OnResultTouchListener{
             override fun onTouchItem(result: Results) {
-
+                showImageMessage("${result.thumbnail.path}.${result.thumbnail.extension}")
             }
         })
         binding.actRv.apply {

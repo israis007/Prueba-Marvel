@@ -1,10 +1,8 @@
 package com.test.app.ui.mainscreen.adapters
 
 import android.content.Context
-import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
@@ -26,14 +24,16 @@ class MarvelAdapter (
 
     lateinit var binding : ItemPictureBinding
 
-    inner class ResultItem(private val view: ItemPictureBinding) : RecyclerView.ViewHolder(view.root) {
+    inner class ResultItem(private val pictureBinding: ItemPictureBinding) : RecyclerView.ViewHolder(pictureBinding.root) {
         fun setData(result: Results){
-            with(view){
-                view.itemActvName.text = result.name
-                view.itemActvModified.text = result.modified
-                view.itemActvDescription.text = result.description
+            with(pictureBinding){
+                pictureBinding.itemActvName.text = result.name
+                pictureBinding.itemActvModified.text = result.modified
+                pictureBinding.itemActvDescription.text = result.description
 
-                updateImage(view.itemAcivBanner, "${result.thumbnail.path}.${result.thumbnail.extension}")
+                updateImage(pictureBinding.itemAcivBanner, "${result.thumbnail.path}.${result.thumbnail.extension}")
+
+                pictureBinding.itemAcivBanner.setOnClickListener { event.onTouchItem(result) }
 
                 executePendingBindings()
             }
@@ -42,6 +42,7 @@ class MarvelAdapter (
 
     interface OnResultTouchListener {
         fun onTouchItem(result: Results)
+        
     }
 
 
