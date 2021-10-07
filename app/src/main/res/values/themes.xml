@@ -24,9 +24,10 @@
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="CustomDialog" parent="android:Theme.Dialog">
+    <style name="CustomDialog" parent="Theme.AppCompat.Dialog.Alert">
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowBackground">@color/backgroundLoading</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
     <style name="CustomDialogInfo" parent="Theme.AppCompat.Dialog.Alert">

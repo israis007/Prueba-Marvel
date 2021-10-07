@@ -23,4 +23,5 @@
     <dimen name="dimen_14dp">14dp</dimen>
     <dimen name="text_error_size_title">30sp</dimen>
     <dimen name="text_error_size_msg">18sp</dimen>
+    <dimen name="size_loading_anim">150dp</dimen>
 </resources>

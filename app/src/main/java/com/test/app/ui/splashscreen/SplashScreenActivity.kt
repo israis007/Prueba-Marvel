@@ -12,7 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SplashScreenActivity : ActivityBase() {
 
-    private val viewModel: SplashScreenViewModel by viewModels()
+    private val vm: SplashScreenViewModel by viewModels()
     private val binding: ActivitySplashScreenBinding by lazy {
         DataBindingUtil.setContentView(this@SplashScreenActivity, R.layout.activity_splash_screen)
     }
@@ -24,17 +24,17 @@ class SplashScreenActivity : ActivityBase() {
 
     override fun initUI() {
         binding.apply {
-            viewModel = this@SplashScreenActivity.viewModel
+            viewModel = this@SplashScreenActivity.vm
             lifecycleOwner = this@SplashScreenActivity
         }
     }
 
     override fun setListeners() {
-        binding.actLavSplash.addAnimatorListener(viewModel.createAnimationListener())
+        binding.actLavSplash.addAnimatorListener(vm.createAnimationListener())
     }
 
     override fun setObservers() {
-        viewModel.animationFinished.observe(this) {
+        vm.animationFinished.observe(this) {
             val finished = it ?: return@observe
             if (finished) {
                 launchActivity(MainActivityView::class.java)
