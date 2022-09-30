@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_people"
+        android:title="@string/title_profile" />
+    <item
+        android:id="@+id/listMoviesFragment"
+        android:icon="@drawable/ic_movies"
+        android:title="@string/title_list_movies" />
+    <item
+        android:id="@+id/ubicationListFragment"
+        android:icon="@drawable/ic_pin_person"
+        android:title="@string/title_ubication_map" />
+    <item
+        android:id="@+id/ubicationRegisterFragment"
+        android:icon="@drawable/ic_pin_drop"
+        android:title="@string/title_ubication_register" />
+    <item
+        android:id="@+id/imageUploadFragment"
+        android:icon="@drawable/ic_cloud_upload"
+        android:title="@string/title_upload_images" />
+</menu>

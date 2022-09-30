@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/listMoviesFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.test.app.ui.mainscreen.fragments.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile"
+        />
+
+    <fragment
+        android:id="@+id/listMoviesFragment"
+        android:name="com.test.app.ui.mainscreen.fragments.listmovies.ListMoviesFragment"
+        android:label="@string/title_list_movies"
+        tools:layout="@layout/fragment_list_movies"
+        />
+
+    <fragment
+        android:id="@+id/ubicationListFragment"
+        android:name="com.test.app.ui.mainscreen.fragments.ubicationlist.UbicationListFragment"
+        android:label="@string/title_ubication_map"
+        tools:layout="@layout/fragment_ubication_map"
+        />
+
+    <fragment
+        android:id="@+id/ubicationRegisterFragment"
+        android:name="com.test.app.ui.mainscreen.fragments.ubicationregister.UbicationRegisterFragment"
+        android:label="@string/title_ubication_register"
+        tools:layout="@layout/fragment_ubication_map"
+        />
+
+    <fragment
+        android:id="@+id/imageUploadFragment"
+        android:name="com.test.app.ui.mainscreen.fragments.imageupload.ImageUploadFragment"
+        android:label="@string/title_upload_images"
+        tools:layout="@layout/fragment_image_upload"
+        />
+
+</navigation>
