@@ -1,14 +1,15 @@
 <resources>
     <string name="app_name">Test App</string>
+
     <string name="general_accept">Aceptar</string>
     <string name="no_internet">No hay conexión a Internet</string>
     <string name="item_label_name">Nombre:</string>
-    <string name="item_label_description">Descripción:</string>
-    <string name="item_label_modified">Modificado:</string>
-    <string name="item_chip_series">Series</string>
-    <string name="item_chip_comics">Comics</string>
-    <string name="item_chip_stories">Historias</string>
-    <string name="item_chip_events">Eventos</string>
-    <string name="item_chip_urls">Urls</string>
+    <string name="item_label_description">Reseña:</string>
+    <string name="item_label_original_title">Título Original:</string>
+    <string name="item_label_release_date">Fecha de salida:</string>
+    <string name="item_chip_favorites">Agregar Favoritos</string>
+    <string name="item_chip_similar">Ver Similares</string>
+
+    <string name="title_error">¡Upppsss!</string>
 
 </resources>

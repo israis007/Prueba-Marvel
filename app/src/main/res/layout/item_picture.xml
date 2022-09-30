@@ -1,174 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_beer_cv_parentLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_beer_cv_parentLayout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/round_corners"
         android:layout_margin="6dp"
-    >
+        android:background="@drawable/round_corners">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/item_aciv_banner"
             android:layout_width="@dimen/banner_witdh"
             android:layout_height="@dimen/banner_height"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_actv_name_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/item_label_text_size"
             android:layout_marginStart="@dimen/dimen_10dp"
             android:layout_marginEnd="@dimen/dimen_14dp"
             android:text="@string/item_label_name"
-            />
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/item_label_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_actv_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_actv_name_label"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/item_label_text_size"
             android:layout_marginStart="@dimen/dimen_10dp"
             android:layout_marginEnd="@dimen/dimen_14dp"
-            tools:text="3 - D Man"
-            />
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/item_label_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
+            app:layout_constraintTop_toBottomOf="@id/item_actv_name_label"
+            tools:text="3 - D Man" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/item_actv_modified_label"
+            android:id="@+id/item_actv_original_title_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_actv_name"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginEnd="@dimen/dimen_14dp"
+            android:text="@string/item_label_original_title"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/item_label_text_size"
-            android:layout_marginStart="@dimen/dimen_10dp"
-            android:layout_marginEnd="@dimen/dimen_14dp"
-            android:text="@string/item_label_modified"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
+            app:layout_constraintTop_toBottomOf="@id/item_actv_name" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/item_actv_modified"
+            android:id="@+id/item_actv_original_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_actv_modified_label"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/item_label_text_size"
             android:layout_marginStart="@dimen/dimen_10dp"
             android:layout_marginEnd="@dimen/dimen_14dp"
-            tools:text="29 de Abril del 2014 a las 02:18 p.m."
-            />
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/item_label_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
+            app:layout_constraintTop_toBottomOf="@id/item_actv_original_title_label"
+            tools:text="título original" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_actv_description_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_actv_modified"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/item_label_text_size"
             android:layout_marginStart="@dimen/dimen_10dp"
             android:layout_marginEnd="@dimen/dimen_14dp"
             android:text="@string/item_label_description"
-            />
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/item_label_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
+            app:layout_constraintTop_toBottomOf="@id/item_actv_original_title" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_actv_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_actv_description_label"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/item_label_text_size"
             android:layout_marginStart="@dimen/dimen_10dp"
             android:layout_marginEnd="@dimen/dimen_14dp"
-            tools:text="No se que lleve aqui"
-            />
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/item_label_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
+            app:layout_constraintTop_toBottomOf="@id/item_actv_description_label"
+            tools:text="No se que lleve aqui" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_actv_release_date_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginEnd="@dimen/dimen_14dp"
+            android:text="@string/item_label_release_date"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/item_label_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
+            app:layout_constraintTop_toBottomOf="@id/item_actv_description" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_actv_release_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_10dp"
+            android:layout_marginEnd="@dimen/dimen_14dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/item_label_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
+            app:layout_constraintTop_toBottomOf="@id/item_actv_release_date_label"
+            tools:text="2022-01-05" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/item_cg_group"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_actv_description"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginStart="@dimen/dimen_10dp"
-            android:layout_marginEnd="@dimen/dimen_14dp">
+            android:layout_marginEnd="@dimen/dimen_14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
+            app:layout_constraintTop_toBottomOf="@id/item_actv_release_date">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/item_chip_series"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/item_chip_series"
-                app:chipBackgroundColor="@color/colorPrimary"
-                app:chipStrokeWidth="2dp"
-                app:chipStrokeColor="@color/colorPrimaryDark"
+                android:text="@string/item_chip_favorites"
                 android:textColor="@color/secondary_variant"
-                />
+                app:chipBackgroundColor="@color/colorPrimary"
+                app:chipStrokeColor="@color/colorPrimaryDark"
+                app:chipStrokeWidth="2dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/item_chip_comics"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/item_chip_comics"
-                app:chipBackgroundColor="@color/colorPrimary"
-                app:chipStrokeWidth="2dp"
-                app:chipStrokeColor="@color/colorPrimaryDark"
+                android:text="@string/item_chip_similar"
                 android:textColor="@color/secondary_variant"
-                />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/item_chip_stories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/item_chip_stories"
                 app:chipBackgroundColor="@color/colorPrimary"
-                app:chipStrokeWidth="2dp"
                 app:chipStrokeColor="@color/colorPrimaryDark"
-                android:textColor="@color/secondary_variant"
-                />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/item_chip_events"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/item_chip_events"
-                app:chipBackgroundColor="@color/colorPrimary"
-                app:chipStrokeWidth="2dp"
-                app:chipStrokeColor="@color/colorPrimaryDark"
-                android:textColor="@color/secondary_variant"
-                />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/item_chip_urls"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/item_chip_urls"
-                app:chipBackgroundColor="@color/colorPrimary"
-                app:chipStrokeWidth="2dp"
-                app:chipStrokeColor="@color/colorPrimaryDark"
-                android:textColor="@color/secondary_variant"
-                />
+                app:chipStrokeWidth="2dp" />
 
         </com.google.android.material.chip.ChipGroup>
 

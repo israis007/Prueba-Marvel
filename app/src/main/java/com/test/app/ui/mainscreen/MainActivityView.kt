@@ -11,11 +11,13 @@ import com.test.app.databinding.ActivityMainBinding
 import com.test.app.objects.Results
 import com.test.app.rest.state.StatusType
 import com.test.app.ui.base.ActivityBase
-import com.test.app.ui.mainscreen.adapters.MarvelAdapter
+import com.test.app.ui.mainscreen.adapters.AdapterMDB
 import com.test.app.ui.tools.CalendarUtils
 import com.test.app.ui.tools.ui.SimpleDividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
+const val LANGUAGE = "es-MX"
 
 @AndroidEntryPoint
 class MainActivityView : ActivityBase() {
@@ -24,15 +26,17 @@ class MainActivityView : ActivityBase() {
         DataBindingUtil.setContentView(this@MainActivityView, R.layout.activity_main )
     }
     private val vm: MainActivityViewModel by viewModels()
-    lateinit var adapter: MarvelAdapter
+    lateinit var adapter: AdapterMDB
     @Inject lateinit var calendarUtils: CalendarUtils
     private var isScrolling = false
     private val linearLayoutManager = LinearLayoutManager(this)
+    private var nextPage = 1
+    private var limit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(binding.root)
         super.onCreate(savedInstanceState)
-        vm.getCharacters()
+        vm.getPopularMovies(language = LANGUAGE, 1)
     }
 
     override fun initUI() {
@@ -40,31 +44,19 @@ class MainActivityView : ActivityBase() {
             viewModel = vm
             lifecycleOwner = this@MainActivityView
         }
-        adapter = MarvelAdapter(this, ArrayList(), object : MarvelAdapter.OnResultTouchListener{
-            override fun onTouchItem(result: Results) {
-                showImageMessage("${result.thumbnail.path}.${result.thumbnail.extension}")
+        adapter = AdapterMDB(this, ArrayList(), object : AdapterMDB.OnResultTouchListener{
+            override fun onTouchItem(pathImage: String) {
+                showImageMessage(path = pathImage)
             }
 
-            override fun onChipSeriesClickListener(result: Results) {
-
-            }
-
-            override fun onChipComicsClickListener(result: Results) {
+            override fun onChipAddFavoriteClickListener(result: Results) {
 
             }
 
-            override fun onChipStoriesClickListener(result: Results) {
+            override fun onChipSimilarClickListener(result: Results) {
 
             }
-
-            override fun onChipEventsClickListener(result: Results) {
-
-            }
-
-            override fun onChipUrlsClickListener(result: Results) {
-
-            }
-        }, calendarUtils)
+        })
         linearLayoutManager.orientation = RecyclerView.VERTICAL
         binding.actRv.apply {
             layoutManager = linearLayoutManager
@@ -83,7 +75,8 @@ class MainActivityView : ActivityBase() {
                 super.onScrolled(recyclerView, dx, dy)
                 if (isScrolling && (linearLayoutManager.itemCount - linearLayoutManager.findFirstVisibleItemPosition() - linearLayoutManager.childCount == 0)){
                     isScrolling = false
-                    vm.getCharacters()
+                    if (!limit)
+                        vm.getPopularMovies(language = LANGUAGE, nextPage)
                 }
             }
         })
@@ -94,14 +87,18 @@ class MainActivityView : ActivityBase() {
     }
 
     override fun setObservers() {
-        vm.charactersResponse.observe(this) {
+        vm.responsePopularMovies.observe(this) {
             val resource = it ?: return@observe
             showLoading(false)
             when (resource.statusType){
                 StatusType.SUCCESS -> {
-                    adapter.addItemsAfter(resource.data!!.data.results)
+                    val response = resource.data!!
+                    nextPage++
+                    if (nextPage > response.total_pages)
+                        limit = true
+                    adapter.addItemsAfter(response.results)
                 }
-                StatusType.ERROR -> showInfoMessage(resource.title ?: "", resource.message ?: "")
+                StatusType.ERROR -> showInfoMessage(getString(R.string.title_error), resource.message)
                 StatusType.LOADING -> showLoading(true)
             }
         }

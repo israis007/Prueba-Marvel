@@ -1,9 +1,8 @@
-package com.test.app.rest.apimarvel
+package com.test.app.rest.apiMDB
 
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.test.app.BuildConfig
-import com.test.app.rest.interceptors.MarvelHeaderInterceptor
 import com.test.app.rest.interceptors.NetworkAvailableInterceptor
 import dagger.Module
 import dagger.Provides
@@ -20,13 +19,13 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 
-const val CLIENT_MARVEL     = "clientMarvel"
-const val RETROFIT_MARVEL   = "retrofitMarvel"
+const val CLIENT_RETROFIT       = "clientMDB"
+const val RETROFIT_MDB          = "retrofitMDB"
 
 
 @Module
 @InstallIn(SingletonComponent::class)
-class ProvidesMarvelAPI @Inject constructor() {
+class ProvidesAPI @Inject constructor() {
 
     private val gsonConverterFactory by lazy {
         GsonConverterFactory.create(
@@ -46,12 +45,11 @@ class ProvidesMarvelAPI @Inject constructor() {
 
     @Provides
     @Singleton
-    @Named(CLIENT_MARVEL)
-    fun clientMarvel(): OkHttpClient =
+    @Named(CLIENT_RETROFIT)
+    fun okHttpClient(): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(logInterceptor)
             .addInterceptor(NetworkAvailableInterceptor())
-            .addInterceptor(MarvelHeaderInterceptor.createMarvelHeaderInterceptor())
             .callTimeout(
                 BuildConfig.TIMEOUT_SECONDS,
                 TimeUnit.SECONDS
@@ -68,8 +66,8 @@ class ProvidesMarvelAPI @Inject constructor() {
 
     @Provides
     @Singleton
-    @Named(RETROFIT_MARVEL)
-    fun provideRetrofitMarvel(@Named(CLIENT_MARVEL) okHttpClient: OkHttpClient): Retrofit =
+    @Named(RETROFIT_MDB)
+    fun retrofit(@Named(CLIENT_RETROFIT) okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder().apply {
             baseUrl(BuildConfig.BASE_URL)
             client(okHttpClient)
@@ -79,7 +77,7 @@ class ProvidesMarvelAPI @Inject constructor() {
 
     @Provides
     @Singleton
-    fun marvelAPI(@Named (RETROFIT_MARVEL) retrofit: Retrofit): InterfaceMarvel =
-        retrofit.create(InterfaceMarvel::class.java)
+    fun marvelAPI(@Named (RETROFIT_MDB) retrofit: Retrofit): InterfaceMDB =
+        retrofit.create(InterfaceMDB::class.java)
 
 }

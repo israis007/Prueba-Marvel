@@ -53,10 +53,11 @@ android {
             debuggable false
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", '"https:test.com.mx"')
-            buildConfigField("String", "API_KEY", '"Basic bWFzdGVyOlNlY3JldDQyLg=="')
-            buildConfigField("String", "CLIENT_KEY", '"Basic bWFzdGVyOlNlY3JldDQyLg=="')
-            buildConfigField("String", "DATE_FORMAT", '"dd/MM/yyyy"')
+            buildConfigField("String", "BASE_URL", '"https://api.themoviedb.org/3/"')
+            buildConfigField("String", "URL_IMGS", '"https://www.themoviedb.org/t/p/w220_and_h330_face"')
+            buildConfigField("String", "MDB_KEY", '"cb310c0df71ce1cb6953dab65c5369e8"')
+            buildConfigField("Long", "TIMEOUT_SECONDS", '60L')
+            buildConfigField("String", "DATE_FORMAT", '"yyyy-MM-dd HH:mm:ss"')
             buildConfigField("String", "DATE_FORMAT_INPUT", '"yyyy-MM-dd"')
             buildConfigField("Long", "TIMEOUT_SECONDS", '60L')
             buildConfigField("String", "MONEY_FORMAT", '"$###,####,###,###,###,##0.00"')
@@ -71,10 +72,11 @@ android {
             renderscriptDebuggable true
             renderscriptOptimLevel 3
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", '"https://gateway.marvel.com"')
-            buildConfigField("String", "PRIVATE_KEY", '"4be23e32c751d1f8509af79222a56b13ed7e758e"')
-            buildConfigField("String", "PUBLIC_KEY", '"e39fd604b946a3743aba823d7ded6b91"')
-            buildConfigField("String", "DATE_FORMAT", '"dd/MM/yyyy"')
+            buildConfigField("String", "BASE_URL", '"https://api.themoviedb.org/3/"')
+            buildConfigField("String", "URL_IMGS", '"https://www.themoviedb.org/t/p/w220_and_h330_face"')
+            buildConfigField("String", "MDB_KEY", '"cb310c0df71ce1cb6953dab65c5369e8"')
+            buildConfigField("Long", "TIMEOUT_SECONDS", '60L')
+            buildConfigField("String", "DATE_FORMAT", '"yyyy-MM-dd HH:mm:ss"')
             buildConfigField("String", "DATE_FORMAT_INPUT", '"yyyy-MM-dd"')
             buildConfigField("Long", "TIMEOUT_SECONDS", '60L')
             buildConfigField("String", "MONEY_FORMAT", '"$###,####,###,###,###,##0.00"')
@@ -89,10 +91,11 @@ android {
             renderscriptDebuggable true
             renderscriptOptimLevel 3
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", '"https://gateway.marvel.com"')
-            buildConfigField("String", "PRIVATE_KEY", '"4be23e32c751d1f8509af79222a56b13ed7e758e"')
-            buildConfigField("String", "PUBLIC_KEY", '"e39fd604b946a3743aba823d7ded6b91"')
-            buildConfigField("String", "DATE_FORMAT", '"dd/MM/yyyy"')
+            buildConfigField("String", "BASE_URL", '"https://api.themoviedb.org/3/"')
+            buildConfigField("String", "URL_IMGS", '"https://www.themoviedb.org/t/p/w220_and_h330_face"')
+            buildConfigField("String", "MDB_KEY", '"cb310c0df71ce1cb6953dab65c5369e8"')
+            buildConfigField("Long", "TIMEOUT_SECONDS", '60L')
+            buildConfigField("String", "DATE_FORMAT", '"yyyy-MM-dd HH:mm:ss"')
             buildConfigField("String", "DATE_FORMAT_INPUT", '"yyyy-MM-dd"')
             buildConfigField("Long", "TIMEOUT_SECONDS", '60L')
             buildConfigField("String", "MONEY_FORMAT", '"$###,####,###,###,###,##0.00"')

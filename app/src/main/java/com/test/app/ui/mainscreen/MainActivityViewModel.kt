@@ -4,33 +4,27 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.test.app.rest.apimarvel.MarvelRepository
-import com.test.app.rest.responses.CharactersResponse
+import com.test.app.rest.responses.PopularMoviesResponse
 import com.test.app.rest.state.Resource
-import com.test.app.rest.usecases.GetMarvelCaseUse
+import com.test.app.rest.usecases.GetPopularMoviesCaseUse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-private const val RESULTS_BY_QUERY = 30
-
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    private val getMarvelCaseUse: GetMarvelCaseUse
+    private val getMarvelCaseUse: GetPopularMoviesCaseUse
 ) : ViewModel() {
 
-    private val _characterResponse = getMarvelCaseUse.getCharacters()
-    val charactersResponse: LiveData<Resource<CharactersResponse>> get() = _characterResponse
+    private val _responsePopularMovies = MutableLiveData<Resource<PopularMoviesResponse>>()
+    val responsePopularMovies: LiveData<Resource<PopularMoviesResponse>> get() = _responsePopularMovies
 
-    private var limit   = RESULTS_BY_QUERY
-    private var offset  = 0
-
-    fun getCharacters(){
+    fun getPopularMovies(language: String, page: Int){
         viewModelScope.launch(Dispatchers.IO){
-            getMarvelCaseUse.invoke(limit, offset)
-            offset += RESULTS_BY_QUERY
+            getMarvelCaseUse.invoke(language = language, page = page){
+                _responsePopularMovies.postValue(it)
+            }
         }
     }
 

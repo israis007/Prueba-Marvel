@@ -8,39 +8,36 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.test.app.BuildConfig
 import com.test.app.R
 import com.test.app.databinding.ItemPictureBinding
 import com.test.app.objects.Results
-import com.test.app.ui.tools.CalendarUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 
-class MarvelAdapter (
+class AdapterMDB (
     val context: Context,
     val listResults: ArrayList<Results>,
-    val event: OnResultTouchListener,
-    val calendarUtils: CalendarUtils
-) : RecyclerView.Adapter<MarvelAdapter.ResultItem>() {
+    val event: OnResultTouchListener
+) : RecyclerView.Adapter<AdapterMDB.ResultItem>() {
 
     lateinit var binding : ItemPictureBinding
 
     inner class ResultItem(private val pictureBinding: ItemPictureBinding) : RecyclerView.ViewHolder(pictureBinding.root) {
         fun setData(result: Results){
             with(pictureBinding){
-                pictureBinding.itemActvName.text = result.name
-                pictureBinding.itemActvModified.text = calendarUtils.getLocalFromMarvel(result.modified)
-                pictureBinding.itemActvDescription.text = result.description
+                itemActvName.text = result.title
+                itemActvOriginalTitle.text = result.original_title
+                itemActvDescription.text = result.overview
+                itemActvReleaseDate.text = result.release_date
+                val path = "${BuildConfig.URL_IMGS}${result.poster_path}"
+                updateImage(itemAcivBanner, path)
 
-                updateImage(pictureBinding.itemAcivBanner, "${result.thumbnail.path}.${result.thumbnail.extension}")
-
-                pictureBinding.itemAcivBanner.setOnClickListener { event.onTouchItem(result) }
-                pictureBinding.itemChipSeries.setOnClickListener { event.onChipSeriesClickListener(result) }
-                pictureBinding.itemChipComics.setOnClickListener { event.onChipComicsClickListener(result) }
-                pictureBinding.itemChipStories.setOnClickListener { event.onChipStoriesClickListener(result) }
-                pictureBinding.itemChipEvents.setOnClickListener { event.onChipEventsClickListener(result) }
-                pictureBinding.itemChipUrls.setOnClickListener { event.onChipUrlsClickListener(result) }
+                itemAcivBanner.setOnClickListener { event.onTouchItem(path) }
+                itemChipSeries.setOnClickListener { event.onChipAddFavoriteClickListener(result) }
+                itemChipComics.setOnClickListener { event.onChipSimilarClickListener(result) }
 
                 executePendingBindings()
             }
@@ -48,12 +45,9 @@ class MarvelAdapter (
     }
 
     interface OnResultTouchListener {
-        fun onTouchItem(result: Results)
-        fun onChipSeriesClickListener(result: Results)
-        fun onChipComicsClickListener(result: Results)
-        fun onChipStoriesClickListener(result: Results)
-        fun onChipEventsClickListener(result: Results)
-        fun onChipUrlsClickListener(result: Results)
+        fun onTouchItem(pathImage: String)
+        fun onChipAddFavoriteClickListener(result: Results)
+        fun onChipSimilarClickListener(result: Results)
     }
 
 
