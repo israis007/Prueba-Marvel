@@ -8,13 +8,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 33
+    buildToolsVersion "33.0.0"
 
     defaultConfig {
         applicationId 'com.test.app'
         minSdkVersion 24
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -24,7 +24,6 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding true
-        viewBinding
     }
 
     signingConfigs {
@@ -103,57 +102,52 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-        coreLibraryDesugaringEnabled true
     }
     kotlinOptions {
         jvmTarget = '1.8'
-        useIR = true
     }
 }
 
-def activityKtx_version             = "1.4.0-beta01"
-def appCompat_version               = "1.3.1"
-def constraint_version              = "2.1.1"
-def coreKotlin_version              = "1.6.0"
+def activityKtx_version             = '1.6.0'
+def appCompat_version               = '1.5.1'
+def constraint_version              = '2.1.4'
+def coreKotlin_version              = '1.9.0'
 def coroutinesRetrofit_version      = "0.9.2"
-def desugar_version                 = "1.1.5"
-def dot_version                     = "4.2"
+def dot_version                     = '4.3'
 def espresso_version                = "3.4.0"
-def firebaseAuth_version            = "21.0.1"
-def firebaseBom_version             = "28.4.2"
-def firebaseCore_version            = "19.0.2"
-def firebaseCrash_version           = "18.2.3"
-def firebaseFire_version            = "23.0.4"
-def firebaseStorage_version         = "20.0.0"
-def glide_version                   = "4.12.0"
-def hilt_version                    = "2.39.1"
+def firebaseAuth_version            = '21.0.8'
+def firebaseBom_version             = '30.5.0'
+def firebaseCore_version            = '21.1.1'
+def firebaseCrash_version           = '18.2.13'
+def firebaseFire_version            = '24.3.1'
+def firebaseStorage_version         = '20.0.2'
+def glide_version                   = '4.14.1'
+def hilt_version                    = '2.44'
 def hiltCompiler_version            = "1.0.0"
 def hiltViewModel_version           = "1.0.0-alpha03"
 def junit_version                   = "1.1.3"
 def junitTest_version               = "4.13.2"
 def kenBurns_version                = "1.0.7"
-def lifeCycle_version               = "2.3.1"
-def lottieVersion                   = "4.2.0"
-def material_version                = "1.4.0"
+def lifeCycle_version               = '2.5.1'
+def lottieVersion                   = '5.2.0'
+def material_version                = '1.6.1'
 def multiDex_version                = "2.0.1"
-def navFragment_version             = "2.3.5"
-def navUI_version                   = "2.3.5"
-def okHttp_version                  = "5.0.0-alpha.2"
+def navFragment_version             = '2.5.2'
+def navUI_version                   = '2.5.2'
+def okHttp_version                  = "5.0.0-alpha.7"
 def retrofit_version                = "2.9.0"
-def work_version                    = "2.6.0"
-def zxing_version                   = "3.4.1"
-def zxingEmbedded_version           = "4.2.0"
+def work_version                    = '2.7.1'
+def zxing_version                   = '3.5.0'
+def zxingEmbedded_version           = '4.3.0'
 
 dependencies {
     //Core
     implementation "androidx.core:core-ktx:$coreKotlin_version"
-    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugar_version"
     implementation "androidx.multidex:multidex:$multiDex_version"
 
     //Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModel_version"
     kapt "androidx.hilt:hilt-compiler:$hiltCompiler_version"
 
     //GUI
@@ -176,7 +170,7 @@ dependencies {
     //LifeCycle
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifeCycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifeCycle_version"
-    implementation("androidx.work:work-runtime-ktx:$work_version")
+    implementation "androidx.work:work-runtime-ktx:$work_version"
 
     //Retrofit, Converters & OkHttp
     implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
