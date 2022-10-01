@@ -77,7 +77,7 @@ class ProvidesAPI @Inject constructor() {
 
     @Provides
     @Singleton
-    fun marvelAPI(@Named (RETROFIT_MDB) retrofit: Retrofit): InterfaceMDB =
+    fun mbdAPI(@Named (RETROFIT_MDB) retrofit: Retrofit): InterfaceMDB =
         retrofit.create(InterfaceMDB::class.java)
 
 }

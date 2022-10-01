@@ -12,6 +12,7 @@ import com.test.app.BuildConfig
 import com.test.app.R
 import com.test.app.databinding.ItemPictureBinding
 import com.test.app.objects.Results
+import com.test.app.ui.tools.updateImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -23,8 +24,6 @@ class AdapterMDB (
     val event: OnResultTouchListener
 ) : RecyclerView.Adapter<AdapterMDB.ResultItem>() {
 
-    lateinit var binding : ItemPictureBinding
-
     inner class ResultItem(private val pictureBinding: ItemPictureBinding) : RecyclerView.ViewHolder(pictureBinding.root) {
         fun setData(result: Results){
             with(pictureBinding){
@@ -33,7 +32,8 @@ class AdapterMDB (
                 itemActvDescription.text = result.overview
                 itemActvReleaseDate.text = result.release_date
                 val path = "${BuildConfig.URL_IMGS}${result.poster_path}"
-                updateImage(itemAcivBanner, path)
+                itemAcivBanner.updateImage(path)
+//                updateImage(itemAcivBanner, path)
 
                 itemAcivBanner.setOnClickListener { event.onTouchItem(path) }
                 itemChipSeries.setOnClickListener { event.onChipAddFavoriteClickListener(result) }
@@ -67,10 +67,8 @@ class AdapterMDB (
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultItem {
-        binding = ItemPictureBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ResultItem(binding)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultItem =
+        ResultItem(ItemPictureBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun getItemCount(): Int =
         listResults.size

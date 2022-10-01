@@ -32,12 +32,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
             app:layout_constraintTop_toBottomOf="@id/item_actv_name_label"
-            tools:text="3 - D Man" />
+            tools:text="Pirata Ram" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_actv_original_title_label"
             style="@style/LabelTitle"
-            android:text="@string/item_label_original_title"
+            android:text="@string/item_label_know_for"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
             app:layout_constraintTop_toBottomOf="@id/item_actv_name" />
@@ -48,12 +48,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
             app:layout_constraintTop_toBottomOf="@id/item_actv_original_title_label"
-            tools:text="título original" />
+            tools:text="Ser sociable" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_actv_description_label"
             style="@style/LabelTitle"
-            android:text="@string/item_label_description"
+            android:text="@string/item_label_gender"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
             app:layout_constraintTop_toBottomOf="@id/item_actv_original_title" />
@@ -64,12 +64,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
             app:layout_constraintTop_toBottomOf="@id/item_actv_description_label"
-            tools:text="No se que lleve aqui" />
+            tools:text="Hombre/Mujer" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/item_actv_release_date_label"
             style="@style/LabelTitle"
-            android:text="@string/item_label_release_date"
+            android:text="@string/item_label_popularity"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
             app:layout_constraintTop_toBottomOf="@id/item_actv_description" />
@@ -80,7 +80,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
             app:layout_constraintTop_toBottomOf="@id/item_actv_release_date_label"
-            tools:text="2022-01-05" />
+            tools:text="500.00" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/item_cg_group"
@@ -92,18 +92,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
             app:layout_constraintTop_toBottomOf="@id/item_actv_release_date">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/item_chip_series"
-                style="@style/ChipNormal"
-                android:text="@string/item_chip_favorites"
-                />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/item_chip_comics"
-                style="@style/ChipInverted"
-                android:text="@string/item_chip_similar"
-                />
 
         </com.google.android.material.chip.ChipGroup>
 

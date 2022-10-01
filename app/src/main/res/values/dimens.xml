@@ -21,6 +21,7 @@
     <dimen name="main_actv_tagline_margin_top">4sp</dimen>
     <dimen name="dimen_10dp">10dp</dimen>
     <dimen name="dimen_14dp">14dp</dimen>
+    <dimen name="dimen_2dp">2dp</dimen>
     <dimen name="text_error_size_title">30sp</dimen>
     <dimen name="text_error_size_msg">18sp</dimen>
     <dimen name="size_loading_anim">150dp</dimen>
