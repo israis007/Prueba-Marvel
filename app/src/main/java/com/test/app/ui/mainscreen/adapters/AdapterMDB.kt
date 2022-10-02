@@ -33,8 +33,6 @@ class AdapterMDB (
                 itemActvReleaseDate.text = result.release_date
                 val path = "${BuildConfig.URL_IMGS}${result.poster_path}"
                 itemAcivBanner.updateImage(path)
-//                updateImage(itemAcivBanner, path)
-
                 itemAcivBanner.setOnClickListener { event.onTouchItem(path) }
                 itemChipSeries.setOnClickListener { event.onChipAddFavoriteClickListener(result) }
                 itemChipComics.setOnClickListener { event.onChipSimilarClickListener(result) }
@@ -75,18 +73,4 @@ class AdapterMDB (
 
     override fun onBindViewHolder(holder: ResultItem, position: Int) =
         holder.setData(listResults[position])
-
-    private fun updateImage(appCompatImageView: AppCompatImageView, path: String?) {
-        Log.d("RECVIW", "url -> $path")
-        GlobalScope.launch(Dispatchers.Main) {
-            Glide.with(context)
-                .load(path)
-                .centerCrop()
-                .placeholder(R.drawable.ic_sand_clock)
-                .error(R.drawable.ic_no_photo)
-                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .into(appCompatImageView)
-        }
-    }
-
 }

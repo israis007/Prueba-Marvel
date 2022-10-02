@@ -6,12 +6,23 @@
     <string name="item_label_name">Nombre:</string>
     <string name="item_label_description">Reseña:</string>
     <string name="item_label_original_title">Título Original:</string>
-    <string name="item_label_release_date">Fecha de salida:</string>
+    <string name="item_label_release_date">Fecha de estreno:</string>
     <string name="item_label_know_for">Conocida(o) por:</string>
     <string name="item_label_gender">Género:</string>
     <string name="item_label_popularity">Popularidad:</string>
+    <string name="item_label_movies">Participaciones:</string>
     <string name="item_chip_favorites">Agregar Favoritos</string>
     <string name="item_chip_similar">Ver Similares</string>
+
+    <!-- Dialog movies -->
+    <string name="dialog_movies_title">Título de la película:</string>
+    <string name="dialog_movies_adult">Es para Adultos:</string>
+    <string name="dialog_movies_original_language">Lenguaje original:</string>
+    <string name="dialog_movies_original_title">Título original:</string>
+    <string name="dialog_movies_overview">Reseña:</string>
+    <string name="dialog_movies_release_date">Fecha de estreno:</string>
+    <string name="dialog_movies_rating">Popularidad:</string>
+    <string name="dialog_movies_vote">Votos:</string>
 
     <!-- Titles -->
     <string name="title_error">¡Upppsss!</string>
@@ -25,5 +36,13 @@
     <string name="male">Hombre</string>
     <string name="female">Mujer</string>
     <string name="no_data">Sin Título</string>
+    <string name="not">No</string>
+    <string name="yes">Yes</string>
+    <string name="content_desc">Icons</string>
+    <string name="image_picker_folder_name">AppTestImages</string>
+
+    <!-- Errors -->
+    <string name="err_missing_permissions">No contamos con permisos para acceder a tu galeria, por favor otorga permisos, para continuar</string>
+    <string name="err_no_image_choose">Canceló la selección de imagen</string>
 
 </resources>

@@ -1,9 +1,10 @@
-package com.test.app.rest.apiMDB
+package com.test.app.rest.providers
 
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.test.app.BuildConfig
 import com.test.app.rest.interceptors.NetworkAvailableInterceptor
+import com.test.app.rest.interfaces.InterfaceMDB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,6 +1,6 @@
 package com.test.app.rest.usecases
 
-import com.test.app.rest.apiMDB.MDBRepository
+import com.test.app.rest.repositories.MDBRepository
 import com.test.app.rest.responses.PopularMoviesResponse
 import com.test.app.rest.state.Resource
 import javax.inject.Inject

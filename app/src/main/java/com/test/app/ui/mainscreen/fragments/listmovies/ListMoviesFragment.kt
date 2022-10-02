@@ -1,15 +1,11 @@
 package com.test.app.ui.mainscreen.fragments.listmovies
 
-import android.database.DatabaseUtils
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AbsListView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.test.app.R
 import com.test.app.databinding.FragmentListMoviesBinding
 import com.test.app.objects.Results
@@ -18,7 +14,7 @@ import com.test.app.ui.base.FragmentBase
 import com.test.app.ui.mainscreen.MainActivityView
 import com.test.app.ui.mainscreen.adapters.AdapterMDB
 import com.test.app.ui.tools.CalendarUtils
-import com.test.app.ui.tools.ui.SimpleDividerItemDecoration
+import com.test.app.ui.tools.setUpScrollingListener
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -37,8 +33,6 @@ class ListMoviesFragment: FragmentBase() {
     lateinit var adapter: AdapterMDB
     @Inject
     lateinit var calendarUtils: CalendarUtils
-    private var isScrolling = false
-    private lateinit var linearLayoutManager: LinearLayoutManager
     private var nextPage = 1
     private var limit = false
 
@@ -74,6 +68,20 @@ class ListMoviesFragment: FragmentBase() {
                 StatusType.LOADING -> activity.showLoading(true)
             }
         }
+        vm.session.observe(viewLifecycleOwner){
+            val resource = it ?: return@observe
+            activity.showLoading(false)
+            when(resource.statusType){
+                StatusType.SUCCESS -> {
+                    if (resource.data == true)
+                        vm.getPopularMovies(language = LANGUAGE, 1)
+                    else
+                        activity.showInfoMessage(getString(R.string.title_error), resource.message)
+                }
+                StatusType.ERROR -> activity.showInfoMessage(getString(R.string.title_error), resource.message)
+                StatusType.LOADING -> activity.showLoading(true)
+            }
+        }
     }
 
     override fun cleanFields() {
@@ -86,7 +94,6 @@ class ListMoviesFragment: FragmentBase() {
 
     override fun initViewComponents() {
         activity = requireActivity() as MainActivityView
-        linearLayoutManager = LinearLayoutManager(requireActivity())
         adapter = AdapterMDB(requireContext(), ArrayList(), object : AdapterMDB.OnResultTouchListener{
             override fun onTouchItem(pathImage: String) {
                 activity.showImageMessage(path = pathImage)
@@ -100,30 +107,12 @@ class ListMoviesFragment: FragmentBase() {
 
             }
         })
-        linearLayoutManager.orientation = RecyclerView.VERTICAL
-        binding.actRv.apply {
-            layoutManager = linearLayoutManager
-            adapter = this@ListMoviesFragment.adapter
-            isNestedScrollingEnabled = true
-            addItemDecoration(SimpleDividerItemDecoration(requireContext()))
-        }
-        binding.actRv.addOnScrollListener(object : RecyclerView.OnScrollListener(){
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL)
-                    isScrolling = true
-            }
+        binding.actRv.setUpScrollingListener(requireContext(), adapter, true){ isLast, _ ->
+            if (isLast && !limit)
+                vm.getPopularMovies(language = LANGUAGE, nextPage)
 
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                if (isScrolling && (linearLayoutManager.itemCount - linearLayoutManager.findFirstVisibleItemPosition() - linearLayoutManager.childCount == 0)){
-                    isScrolling = false
-                    if (!limit)
-                        vm.getPopularMovies(language = LANGUAGE, nextPage)
-                }
-            }
-        })
-        vm.getPopularMovies(language = LANGUAGE, 1)
+        }
+        vm.login()
     }
 
     override fun changeToolbarParams() {

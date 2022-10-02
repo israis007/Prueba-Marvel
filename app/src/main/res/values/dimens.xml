@@ -28,4 +28,7 @@
     <dimen name="banner_witdh">150dp</dimen>
     <dimen name="banner_height">250dp</dimen>
     <dimen name="item_label_text_size">16sp</dimen>
+    <dimen name="poster_margin">6dp</dimen>
+    <dimen name="dialog_movies_height">420dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

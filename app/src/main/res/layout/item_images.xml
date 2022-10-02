@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_14dp"
+        app:cardCornerRadius="@dimen/dimen_14dp"
+        android:elevation="@dimen/dimen_2dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/aiv_image"
+            android:layout_width="@dimen/banner_witdh"
+            android:layout_height="@dimen/banner_witdh" />
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

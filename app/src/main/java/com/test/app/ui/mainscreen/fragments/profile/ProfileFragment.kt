@@ -82,11 +82,11 @@ class ProfileFragment: FragmentBase() {
             }
 
             override fun onChipClicked(result: KnowFor) {
-                Log.d("Chip", Gson().toJson(result))
+                activity.showMovieMessage(result)
             }
         })
         binding.actRv.setUpScrollingListener(requireContext(), adapter, true){ lastItem, _ ->
-            if (lastItem)
+            if (lastItem && !limit)
                 vm.getPopularPersons(LANGUAGE, nextPage)
         }
         vm.getPopularPersons(LANGUAGE, 1)

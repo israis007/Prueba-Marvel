@@ -8,15 +8,18 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.test.app.BuildConfig
 import com.test.app.R
 import com.test.app.databinding.DialogImageBinding
 import com.test.app.databinding.DialogInfoBinding
+import com.test.app.databinding.DialogMovieBinding
+import com.test.app.objects.KnowFor
 import com.test.app.ui.base.dialogs.DialogCallback
 import com.test.app.ui.base.dialogs.DialogViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 const val ARG_EXTRAS = "argsExtras"
@@ -106,7 +109,7 @@ abstract class ActivityBase : AppCompatActivity() {
             dial.dismiss()
         }
 
-        GlobalScope.launch(Dispatchers.Main) {
+        lifecycleScope.launch(Dispatchers.Main) {
             Glide.with(this@ActivityBase)
                 .load(path)
                 .optionalFitCenter()
@@ -115,7 +118,56 @@ abstract class ActivityBase : AppCompatActivity() {
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .into(binding.dialogImage)
         }
+        dialog.create().show()
+    }
 
+    fun showMovieMessage(knowFor: KnowFor) {
+        val dialog = AlertDialog.Builder(this@ActivityBase, R.style.CustomDialogInfo)
+        val vm = ViewModelProvider(this@ActivityBase)[DialogViewModel::class.java]
+        val binding: DialogMovieBinding = DataBindingUtil.inflate(
+            LayoutInflater.from(this@ActivityBase),
+            R.layout.dialog_movie,
+            null,
+            false
+        )
+        binding.apply {
+            viewModel = vm
+            lifecycleOwner = this@ActivityBase
+        }
+        dialog.setView(binding.root)
+        dialog.setCancelable(false)
+        dialog.setPositiveButton(R.string.general_accept) { dial, _ ->
+            dial.dismiss()
+        }
+
+        with(binding){
+            itemActvTitle.text = knowFor.title
+            itemAdultName.text = getString(if (knowFor.adult) R.string.yes else R.string.not)
+            itemOriginalLanguage.text = knowFor.original_language
+            itemOriginalTitle.text = knowFor.original_title
+            itemActvReleaseDate.text = knowFor.release_date
+            itemActvRating.text = knowFor.vote_average.toString()
+            itemActvVotes.text = knowFor.vote_count.toString()
+            itemActvReview.text = knowFor.overview
+        }
+
+        lifecycleScope.launch(Dispatchers.Main) {
+            Glide.with(this@ActivityBase)
+                .load("${BuildConfig.URL_IMGS}${knowFor.backdrop_path}")
+                .optionalFitCenter()
+                .placeholder(R.drawable.ic_sand_clock)
+                .error(R.drawable.ic_no_photo)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .into(binding.aivBackdrop)
+
+            Glide.with(this@ActivityBase)
+                .load("${BuildConfig.URL_IMGS}${knowFor.poster_path}")
+                .optionalFitCenter()
+                .placeholder(R.drawable.ic_sand_clock)
+                .error(R.drawable.ic_no_photo)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .into(binding.aivPoster)
+        }
         dialog.create().show()
     }
 

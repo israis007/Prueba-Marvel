@@ -12,8 +12,7 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/item_aciv_banner"
-            android:layout_width="@dimen/banner_witdh"
-            android:layout_height="@dimen/banner_height"
+            style="@style/Banner"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -82,6 +81,14 @@
             app:layout_constraintTop_toBottomOf="@id/item_actv_release_date_label"
             tools:text="500.00" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_actv_movie_list"
+            style="@style/LabelTitle"
+            android:text="@string/item_label_movies"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
+            app:layout_constraintTop_toBottomOf="@id/item_actv_release_date" />
+
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/item_cg_group"
             android:layout_width="0dp"
@@ -91,7 +98,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/item_aciv_banner"
-            app:layout_constraintTop_toBottomOf="@id/item_actv_release_date">
+            app:layout_constraintTop_toBottomOf="@id/item_actv_movie_list">
 
         </com.google.android.material.chip.ChipGroup>
 

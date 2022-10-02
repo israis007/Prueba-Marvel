@@ -1,5 +1,7 @@
-package com.test.app.rest.apiMDB
+package com.test.app.rest.repositories
 
+import com.test.app.rest.providers.ProvidesAPI
+import com.test.app.rest.providers.RETROFIT_MDB
 import com.test.app.rest.responses.PopularMoviesResponse
 import com.test.app.rest.responses.PopularPersonsResponse
 import com.test.app.rest.state.Resource

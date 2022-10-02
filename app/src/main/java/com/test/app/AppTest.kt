@@ -1,7 +1,6 @@
 package com.test.app
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication

@@ -12,8 +12,7 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/item_aciv_banner"
-            android:layout_width="@dimen/banner_witdh"
-            android:layout_height="@dimen/banner_height"
+            style="@style/Banner"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

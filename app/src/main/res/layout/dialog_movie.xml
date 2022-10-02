@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.test.app.ui.base.dialogs.DialogViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_movies_height">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/aiv_backdrop"
+                style="@style/Banner"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/corner_stroke"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_title_label"
+                style="@style/LabelTitle"
+                android:text="@string/dialog_movies_title"
+                android:layout_marginTop="@dimen/poster_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/aiv_backdrop"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_title"
+                style="@style/LabelContent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/aiv_backdrop"
+                app:layout_constraintTop_toBottomOf="@id/item_actv_title_label"
+                tools:text="Pirata Ram Lives" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_adult_label"
+                style="@style/LabelTitle"
+                android:text="@string/dialog_movies_adult"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/aiv_backdrop"
+                app:layout_constraintTop_toBottomOf="@id/item_actv_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_adult_name"
+                style="@style/LabelContent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/aiv_backdrop"
+                app:layout_constraintTop_toBottomOf="@id/item_actv_adult_label"
+                tools:text="No/Si" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_original_language_label"
+                style="@style/LabelTitle"
+                android:text="@string/dialog_movies_original_language"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/aiv_backdrop"
+                app:layout_constraintTop_toBottomOf="@id/item_adult_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_original_language"
+                style="@style/LabelContent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/aiv_backdrop"
+                app:layout_constraintTop_toBottomOf="@id/item_actv_original_language_label"
+                tools:text="Es" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_original_title_label"
+                style="@style/LabelTitle"
+                android:text="@string/dialog_movies_original_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/aiv_backdrop"
+                app:layout_constraintTop_toBottomOf="@id/item_original_language" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_original_title"
+                style="@style/LabelContent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/aiv_backdrop"
+                app:layout_constraintTop_toBottomOf="@id/item_actv_original_title_label"
+                tools:text="La vida de Pirata Ram" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_release_date_label"
+                style="@style/LabelTitle"
+                android:text="@string/dialog_movies_release_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/aiv_backdrop"
+                app:layout_constraintTop_toBottomOf="@id/item_original_title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_release_date"
+                style="@style/LabelContent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/aiv_backdrop"
+                app:layout_constraintTop_toBottomOf="@id/item_actv_release_date_label"
+                tools:text="2032-02-05" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/aiv_poster"
+                style="@style/Banner"
+                android:layout_marginEnd="@dimen/corner_stroke"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/aiv_backdrop"
+                android:layout_marginTop="@dimen/poster_margin"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_rating_label"
+                style="@style/LabelTitle"
+                android:text="@string/dialog_movies_rating"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/aiv_poster"
+                app:layout_constraintTop_toTopOf="@id/aiv_poster"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_rating"
+                style="@style/LabelContent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/aiv_poster"
+                app:layout_constraintTop_toBottomOf="@id/item_actv_rating_label"
+                tools:text="3.3" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_votes_label"
+                style="@style/LabelTitle"
+                android:text="@string/dialog_movies_vote"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/aiv_poster"
+                app:layout_constraintTop_toBottomOf="@+id/item_actv_rating"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_votes"
+                style="@style/LabelContent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/aiv_poster"
+                app:layout_constraintTop_toBottomOf="@id/item_actv_votes_label"
+                tools:text="3" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_review_label"
+                style="@style/LabelTitle"
+                android:text="@string/dialog_movies_overview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/aiv_poster"
+                app:layout_constraintTop_toBottomOf="@+id/item_actv_votes"
+                />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_actv_review"
+                style="@style/LabelContent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/aiv_poster"
+                app:layout_constraintTop_toBottomOf="@id/item_actv_review_label"
+                tools:text="..." />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

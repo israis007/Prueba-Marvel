@@ -1,4 +1,4 @@
-package com.test.app.rest.apiMDB
+package com.test.app.rest.interfaces
 
 import com.test.app.BuildConfig
 import com.test.app.rest.responses.PopularMoviesResponse
