@@ -126,7 +126,7 @@ class ImageUploadFragment: FragmentBase() {
         }
         vm.listImages.observe(viewLifecycleOwner){
             val resource = it ?: return@observe
-            activity.showLoading(false)
+//            activity.showLoading(false)
             when(resource.statusType){
                 StatusType.SUCCESS -> {
                     listUrls = ArrayList()
@@ -143,12 +143,13 @@ class ImageUploadFragment: FragmentBase() {
         }
         vm.urlImage.observe(viewLifecycleOwner){
             val resource = it ?: return@observe
-            activity.showLoading(false)
             when(resource.statusType){
                 StatusType.SUCCESS -> {
                     listUrls.add(resource.data ?: "")
-                    if (listUrls.size ==  listImages.size)
+                    if (listUrls.size ==  listImages.size) {
+                        activity.showLoading(false)
                         adapter.addItemsAfter(listUrls)
+                    }
                 }
                 StatusType.ERROR -> activity.showInfoMessage(getString(R.string.title_error), resource.message)
                 StatusType.LOADING -> activity.showLoading(true)
