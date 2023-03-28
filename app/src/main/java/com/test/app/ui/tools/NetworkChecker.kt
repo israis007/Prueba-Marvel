@@ -10,20 +10,12 @@ class NetworkChecker {
     companion object {
         fun isConnected(): Boolean {
             val conman = AppTest.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            return if (Build.VERSION.SDK_INT < 23){
-                val netinfo = conman.activeNetworkInfo
-                if (netinfo != null)
-                    netinfo.isConnected && (netinfo.type == ConnectivityManager.TYPE_WIFI || netinfo.type == ConnectivityManager.TYPE_MOBILE)
-                else
-                    false
-            } else {
-                val network = conman.activeNetwork
-                if (network != null){
-                    val netcap = conman.getNetworkCapabilities(network)!!
-                    (netcap.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || netcap.hasTransport(NetworkCapabilities.TRANSPORT_WIFI))
-                } else
-                    false
-            }
+            val network = conman.activeNetwork
+            return if (conman.activeNetwork != null){
+                val netcap = conman.getNetworkCapabilities(network)
+                (netcap?.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) == true || netcap?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true)
+            } else
+                false
         }
     }
 }
