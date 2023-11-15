@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.app.rest.responses.PopularPersonsResponse
 import com.test.app.rest.state.Resource
-import com.test.app.rest.usecases.GetPopularPersonsCaseUse
+import com.test.app.rest.usecases.GetPopularPersonsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val getPopularPersonsCaseUse: GetPopularPersonsCaseUse
+    private val getPopularPersonsCaseUse: GetPopularPersonsUseCase
 ): ViewModel() {
 
     private val _response = MutableLiveData<Resource<PopularPersonsResponse>>()

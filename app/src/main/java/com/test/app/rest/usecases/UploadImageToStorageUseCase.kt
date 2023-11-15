@@ -5,7 +5,7 @@ import com.test.app.rest.repositories.StorageRepository
 import com.test.app.rest.state.Resource
 import javax.inject.Inject
 
-class UploadImageToStorageCaseUse @Inject constructor(
+class UploadImageToStorageUseCase @Inject constructor(
     val storageRepository: StorageRepository
 ) {
 

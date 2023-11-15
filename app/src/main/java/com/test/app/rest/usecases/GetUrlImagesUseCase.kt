@@ -4,7 +4,7 @@ import com.test.app.rest.repositories.StorageRepository
 import com.test.app.rest.state.Resource
 import javax.inject.Inject
 
-class GetUrlImagesCaseUse @Inject constructor(
+class GetUrlImagesUseCase @Inject constructor(
     private val storageRepository: StorageRepository
 ) {
 

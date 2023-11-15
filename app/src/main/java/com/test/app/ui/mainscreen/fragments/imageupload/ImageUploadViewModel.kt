@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.app.rest.state.Resource
-import com.test.app.rest.usecases.GetListOfImagesCaseUse
-import com.test.app.rest.usecases.GetUrlImagesCaseUse
-import com.test.app.rest.usecases.UploadImageToStorageCaseUse
+import com.test.app.rest.usecases.GetListOfImagesUseCase
+import com.test.app.rest.usecases.GetUrlImagesUseCase
+import com.test.app.rest.usecases.UploadImageToStorageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,9 +16,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ImageUploadViewModel @Inject constructor(
-    private val uploadImageToStorageCaseUse: UploadImageToStorageCaseUse,
-    private val getUrlImagesCaseUse: GetUrlImagesCaseUse,
-    private val getListOfImagesCaseUse: GetListOfImagesCaseUse
+    private val uploadImageToStorageCaseUse: UploadImageToStorageUseCase,
+    private val getUrlImagesCaseUse: GetUrlImagesUseCase,
+    private val getListOfImagesCaseUse: GetListOfImagesUseCase
 ): ViewModel(){
 
     private val _uploadSuccess = MutableLiveData<Resource<String>>()

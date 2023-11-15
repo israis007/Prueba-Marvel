@@ -4,7 +4,7 @@ import com.test.app.rest.repositories.SessionRepository
 import com.test.app.rest.state.Resource
 import javax.inject.Inject
 
-class LoginCaseUse @Inject constructor(
+class LoginUseCase @Inject constructor(
     private val sessionRepository: SessionRepository
 ) {
 

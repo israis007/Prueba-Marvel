@@ -5,7 +5,7 @@ import com.test.app.rest.responses.PopularMoviesResponse
 import com.test.app.rest.state.Resource
 import javax.inject.Inject
 
-class GetPopularMoviesCaseUse @Inject constructor(
+class GetPopularMoviesUseCase @Inject constructor(
     private val repository: MDBRepository
 ) {
     suspend operator fun invoke(language: String, page: Int, response: (popularMoviesResponse: Resource<PopularMoviesResponse>) -> Unit) =

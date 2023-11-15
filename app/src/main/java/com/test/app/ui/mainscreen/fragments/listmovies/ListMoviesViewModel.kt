@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.test.app.rest.responses.PopularMoviesResponse
 import com.test.app.rest.state.Resource
-import com.test.app.rest.usecases.GetPopularMoviesCaseUse
-import com.test.app.rest.usecases.LoginCaseUse
+import com.test.app.rest.usecases.GetPopularMoviesUseCase
+import com.test.app.rest.usecases.LoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ListMoviesViewModel @Inject constructor(
-    private val getMarvelCaseUse: GetPopularMoviesCaseUse,
-    private val loginCaseUse: LoginCaseUse
+    private val getMarvelCaseUse: GetPopularMoviesUseCase,
+    private val loginCaseUse: LoginUseCase
 ) : ViewModel() {
 
     private val _responsePopularMovies = MutableLiveData<Resource<PopularMoviesResponse>>()
